@@ -1,0 +1,21 @@
+
+<h1>Angular</h1>
+<courses></courses>
+<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>
+<bootstrap-panel>
+    <ng-container class="heading">
+        Heading
+    </ng-container>
+    <ng-container class="body">
+        <h2> Body </h2>
+        <p>This is Panel Body</p>
+    </ng-container>
+</bootstrap-panel>
+
+<app-directive></app-directive>
+<hr>
+
+<input type="text" [appInputFormat]="'uppercase'" >
+<hr>
+
+<contact-form></contact-form>

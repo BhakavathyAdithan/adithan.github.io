@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg" [style.backgroundColor]="navbarColor" [style.color]="textColor">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li routerLinkActive="active current" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+            <a [style.color]="textColor" class="nav-link"  routerLink="">Home</a>
+        </li>
+      <li routerLinkActive="active current" class="nav-item">
+        <a [style.color]="textColor" class="nav-link" routerLink="/followers" [queryParams]="{page:1, sortBy:'Newest'}">Followers <span class="sr-only">(current)</span></a>
+      </li>
+      <li routerLinkActive="active current" class="nav-item">
+        <a [style.color]="textColor" class="nav-link" routerLink="/posts">Posts</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf="authService.isLoggedIn() && authService.currentUser.admin" routerLinkActive="active current" class="nav-item">
+          <a [style.color]="textColor" class="nav-link" routerLink="/admin">Admin</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+        <a [style.color]="textColor" class="nav-link">Welcome {{authService.currentUser.name}}</a>
+    </li>
+      <li *ngIf="!authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+          <a [style.color]="textColor" class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+          <a [style.color]="textColor" class="nav-link" (click)="authService.logout()" routerLink="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

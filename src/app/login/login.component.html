@@ -1,0 +1,13 @@
+<div class="d-flex flex-row justify-content-center container-fluid mt-4">
+<form #f="ngForm" (ngSubmit)="login(f.value)">
+  <div *ngIf="isNotValid" class="alert alert-danger">UserName/Password is not correct</div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input ngModel type="email" name="username" class="col-12 form-control">
+  </div>
+  <div class="form-group">
+      <label for="password">Password</label>
+      <input ngModel type="password" name="password" class="col-12 form-control">
+    </div>
+    <button class="btn btn-success" [disabled]=!f.valid >Submit</button>
+</form>

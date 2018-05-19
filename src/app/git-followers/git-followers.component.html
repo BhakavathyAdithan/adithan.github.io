@@ -1,0 +1,6 @@
+<hr>
+<div class="container">
+  <ul class="list-group" *ngFor="let follower of followers">
+    <a [routerLink]="['/followers',follower.id,follower.name]" class="list-group-item list-group-item-action">{{follower.name}}</a>
+  </ul>
+</div>

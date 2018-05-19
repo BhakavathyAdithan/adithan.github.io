@@ -1,0 +1,96 @@
+
+<!-- *ngIf Directive-->
+
+<div *ngIf="courses.length>0">
+  <h2>List of Courses - ngIf Type 1</h2>
+</div>
+<div *ngIf="courses.length==0">
+  <h2>List of Articles - ngIf Type 1</h2>
+</div>
+<hr>
+<div *ngIf="courses.length>0 ; then template1 else template2"></div>
+<ng-template #template1>
+    <h2>List of Courses - ngIf Type 2</h2>
+</ng-template>
+<ng-template #template2>
+    <h2>List of Articles - ngIf Type 2</h2>
+</ng-template>
+<hr>
+
+<!-- Hidden Property - Alternative to *ngIf -->
+
+<div [hidden]="courses.length==0">
+    <h2>Courses Available</h2>
+  </div>
+  <div [hidden]="courses.length>0">
+    <h2>No Courses Yet</h2>
+  </div>
+<hr>
+
+
+<!-- *ngSwitchCase Directive -->
+
+<ul class="nav nav-pills">
+<li class="nav-item"><a class="nav-link active" [class.active]="viewMode=='map'" style="cursor:pointer;" (click)="viewMode='map'">Map</a></li>
+<li class="nav-item"><a class="nav-link" [class.active]="viewMode=='list'" style="cursor:pointer;" (click)="viewMode='list'">List</a></li>  
+</ul>
+
+<div [ngSwitch]='viewMode'>
+  <ul>
+    <li *ngSwitchCase="'map'">Contents of Map</li>
+    <li *ngSwitchCase="'list'">Contents of List</li>
+    <li *ngSwitchDefault>Option not available</li>
+  </ul>
+</div>
+ 
+<!-- *ngFor And Angular Change Detection Example-->
+
+<div>
+  <button class="btn btn-primary" (click)="onAdd()">Add</button>
+  <ul>
+    <li *ngFor="let subject of subjects ; index as i">
+      {{i}} -- {{subject.name}}
+      <button class="btn btn-danger" (click)="onRemove(subject)">Remove</button>
+    </li>
+  </ul>
+</div>
+<hr>
+
+
+<!-- Angular Track By Feature -->
+<div> 
+<button class="btn btn-primary" (click)="loadJournals()">Load Journals</button>
+<ul>
+  <li *ngFor="let journal of journals ; trackBy: trackJournal">{{journal.name}}</li>
+</ul>
+</div>
+<hr>
+
+
+<!-- ngClass Directive -->
+
+<div>
+  <button class="btn" (click)="changeMe();" [ngClass]="{
+    'btn-primary' : color,
+    'btn-danger' : !color
+  }">Click Me</button>
+</div>
+<hr>
+
+<!-- ngStyle Directive -->
+<div>
+    <button (click)="styleMe();" [ngStyle]="{
+      'backgroundColor' : bgColor ? 'blue' : 'red'
+    }">Style Me</button>
+  </div>
+<hr>
+
+<!-- Safe Traversal Operator -->
+<div>
+  <span>
+    Demonstrating Safe Traversal Operator
+  </span>
+  <span>
+    {{user.address?.pincode}}
+  </span>
+</div>
