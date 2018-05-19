@@ -1,5 +1,6 @@
 export const environment = {
     production: false,
-    navColor : 'blue'
+    navColor : 'teal',
+    textcolor: 'white'
   };
 
